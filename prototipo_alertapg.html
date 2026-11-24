@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlertaPG - Protótipo CitizenTech</title>
+<style>
+:root{--navy:#102332;--navy2:#173647;--teal:#0e9f91;--teal-light:#d9f3ef;--orange:#f0a34a;--red:#d65b57;--blue:#3987b8;--ink:#172b3a;--muted:#657987;--line:#dce5ea;--bg:#f4f7f9;--white:#fff;--green:#2f8f68}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#e8f0f3,#f6f8fa);font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);min-height:100vh;display:grid;place-items:center;padding:24px}
+.shell{width:min(100%,440px);background:#0d202d;border-radius:38px;padding:12px;box-shadow:0 24px 70px #10233233}.phone{background:var(--bg);border-radius:29px;min-height:800px;overflow:hidden;position:relative}.status{height:24px;background:var(--navy);color:#b9ced6;display:flex;justify-content:space-between;padding:5px 20px 0;font-size:10px}.header{background:var(--navy);color:white;padding:14px 22px 20px;display:flex;align-items:center;justify-content:space-between}.eyebrow{font-size:9px;letter-spacing:2px;color:#8bd8d0;font-weight:800}.brand{font-size:27px;font-weight:800;letter-spacing:.3px;margin-top:3px}.avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:#244859;color:white;font-size:20px}.screen{display:none;padding:19px 18px 96px;min-height:650px}.screen.active{display:block}.screen h2{font-size:21px;line-height:1.15;margin:4px 0 15px;color:var(--ink)}.screen h3{font-size:14px;margin:18px 0 10px}.small{font-size:11px;color:var(--muted);line-height:1.45}.weather{background:#fff0db;border-radius:13px;padding:14px;display:flex;gap:12px;align-items:center;margin-bottom:18px}.weather .symbol{width:32px;height:32px;border-radius:50%;background:var(--orange);color:white;display:grid;place-items:center;font-size:18px;font-weight:800}.weather strong{font-size:12px;color:#6a4719;display:block}.weather span{font-size:10px;color:#775d39}.map{height:294px;border-radius:15px;background:#e6eef0;position:relative;overflow:hidden;border:1px solid #d9e4e8;background-image:linear-gradient(#fff 9px,transparent 9px),linear-gradient(90deg,#fff 9px,transparent 9px);background-size:78px 78px}.road{position:absolute;height:9px;background:#c6d8dd;transform-origin:left center;border-radius:10px}.road.r1{width:420px;left:-40px;top:205px;transform:rotate(-19deg)}.road.r2{width:360px;left:45px;top:46px;transform:rotate(66deg)}.road.r3{width:310px;left:4px;top:90px;transform:rotate(0deg)}.water{position:absolute;bottom:10px;left:-30px;width:430px;height:44px;border-radius:50%;background:#9ccbd6;transform:rotate(-4deg);opacity:.7}.pin{position:absolute;width:32px;height:32px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;color:white;font-weight:800;border:3px solid white;box-shadow:0 3px 8px #10233233;cursor:pointer}.pin b{transform:rotate(45deg);font-size:12px}.pin.red{background:var(--red);left:27%;top:34%}.pin.orange{background:var(--orange);left:72%;top:56%}.maptag{position:absolute;top:12px;left:12px;background:white;border-radius:8px;padding:7px 10px;font-size:10px;font-weight:700;box-shadow:0 2px 8px #10233212}.legend{display:flex;gap:12px;margin:10px 2px 13px;font-size:9px;color:var(--muted)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}.incident{background:white;border:1px solid var(--line);border-radius:13px;padding:13px;margin-top:13px;cursor:pointer}.incident strong{font-size:12px;display:block}.incident span{font-size:10px;color:var(--muted);display:block;margin-top:5px}.btn{border:0;border-radius:12px;padding:14px 16px;background:var(--teal);color:white;font-size:13px;font-weight:750;width:100%;cursor:pointer;margin-top:13px;box-shadow:0 5px 12px #0e9f9126}.btn.secondary{background:#e5f2f9;color:#246487;box-shadow:none}.btn.ghost{background:white;color:var(--teal);border:1px solid var(--line);box-shadow:none}.back{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:.6px;cursor:pointer;margin:1px 0 15px;display:inline-block}.map-detail{height:145px;border-radius:14px;background:#e6eef0;position:relative;overflow:hidden;margin:13px 0}.map-detail:before,.map-detail:after{content:"";position:absolute;background:#fff;width:120%;height:10px;top:45%;left:-10%;transform:rotate(14deg)}.map-detail:after{transform:rotate(-28deg);top:65%}.map-detail .pin{left:46%;top:39%}.statusbox{border-radius:12px;padding:14px;background:#fdeae8;margin:12px 0}.statusbox strong{display:block;color:#8e3936;font-size:13px}.statusbox span{font-size:10px;color:#8e5552}.info{font-size:11px;color:var(--muted);line-height:1.8}.label{font-size:11px;color:var(--muted);margin:17px 0 8px;display:block}.field{width:100%;border:1px solid var(--line);border-radius:10px;padding:13px;background:white;font:12px inherit;color:var(--ink)}.choice{display:flex;gap:8px}.choice button{flex:1;background:white;border:1px solid var(--line);padding:12px 6px;border-radius:10px;color:var(--muted);font-size:10px;cursor:pointer}.choice button.selected{background:var(--teal);border-color:var(--teal);color:white;font-weight:800}.upload{border:1px dashed #b9cbd1;border-radius:10px;background:white;padding:17px;text-align:center;color:var(--muted);font-size:11px}.successmark{margin:20px auto 16px;width:78px;height:78px;border-radius:50%;background:#e2f3ea;color:var(--green);display:grid;place-items:center;font-size:40px;font-weight:800}.success{text-align:center;padding-top:20px}.protocol{margin-top:27px;background:white;border:1px solid var(--line);padding:17px;border-radius:14px;text-align:left}.protocol small{font-size:10px;color:var(--muted);letter-spacing:1px}.protocol strong{font-size:23px;color:var(--teal);display:block;margin:8px 0}.note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:15px}.tabs{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:white;border-top:1px solid var(--line);padding:12px 8px 16px}.tabs button{border:0;background:none;color:#82939d;font-size:10px;cursor:pointer}.tabs button.active{color:var(--teal);font-weight:800}.tabs span{display:block;font-size:17px;margin-bottom:3px}.modal{position:absolute;inset:0;background:#10233288;display:none;align-items:center;justify-content:center;padding:26px}.modal.show{display:flex}.modalbox{background:white;border-radius:18px;padding:22px;width:100%}.modalbox h3{margin:0 0 10px}.modalbox p{font-size:12px;color:var(--muted);line-height:1.55}.footerhint{font-size:9px;text-align:center;color:#82939d;margin:13px 5px 0}
+@media(max-width:500px){body{padding:0;background:#0d202d}.shell{width:100%;padding:0;border-radius:0;box-shadow:none}.phone{border-radius:0;min-height:100vh}.screen{min-height:calc(100vh - 150px)}}
+</style>
+</head>
+<body>
+<div class="shell"><main class="phone">
+  <div class="status"><span>9:41</span><span>● ● ● ▰</span></div>
+  <header class="header"><div><div class="eyebrow">CITIZENTECH</div><div class="brand">AlertaPG</div></div><div class="avatar">◎</div></header>
+  <section id="home" class="screen active">
+    <h2>Como está a sua região?</h2>
+    <div class="weather"><div class="symbol">!</div><div><strong>Atenção para chuva forte</strong><span>Consulte os alertas oficiais antes de sair.</span></div></div>
+    <h3>Mapa colaborativo</h3>
+    <div class="map"><div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="water"></div><div class="maptag">2 ocorrências recentes</div><button class="pin red" aria-label="Ocorrência Aviação" onclick="go('detail')"><b>!</b></button><button class="pin orange" aria-label="Ocorrência Vila Sônia" onclick="go('detail')"><b>!</b></button></div>
+    <div class="legend"><span><i class="dot" style="background:#d65b57"></i>Relato recente</span><span><i class="dot" style="background:#f0a34a"></i>Em validação</span></div>
+    <div class="incident" onclick="go('detail')"><strong>Aviação · relato recente</strong><span>Alagamento reportado há 18 min · toque para ver detalhes</span></div>
+    <button class="btn" onclick="go('report')">＋ Reportar situação</button>
+    <p class="footerhint">Relatos da comunidade não substituem alertas oficiais.</p>
+  </section>
+  <section id="detail" class="screen">
+    <div class="back" onclick="go('home')">← VOLTAR AO MAPA</div><h2>Ocorrência</h2>
+    <div class="map-detail"><button class="pin red" aria-label="Localização da ocorrência"><b>!</b></button></div>
+    <div class="statusbox"><strong>Alagamento reportado</strong><span>Aviação · há 18 minutos</span></div>
+    <h3>Informações da comunidade</h3><div class="info">Nível informado: próximo ao meio-fio<br>Status: aguardando validação<br>Última atualização: há 18 minutos</div>
+    <button class="btn" onclick="go('report')">Reportar atualização</button>
+    <button class="btn secondary" onclick="openGuidance()">Ver orientações de segurança</button>
+  </section>
+  <section id="report" class="screen">
+    <div class="back" onclick="go('detail')">← CANCELAR</div><h2>Novo relato</h2>
+    <label class="label" for="kind">O que está acontecendo?</label><select id="kind" class="field"><option>Alagamento</option><option>Bueiro obstruído</option><option>Enxurrada</option><option>Outro problema</option></select>
+    <label class="label">Qual o nível da água?</label><div class="choice"><button onclick="pick(this)">Na rua</button><button class="selected" onclick="pick(this)">Meio-fio</button><button onclick="pick(this)">Acima</button></div>
+    <label class="label" for="location">Local aproximado</label><input id="location" class="field" value="Praia Grande - SP" aria-label="Local aproximado">
+    <label class="label">Foto (opcional)</label><div class="upload">＋ Adicionar foto (demonstração)</div>
+    <p class="note">Use apenas informações observadas com segurança. Não se aproxime da água nem atravesse áreas alagadas para registrar fotos.</p>
+    <button class="btn" onclick="submitReport()">Enviar relato</button>
+  </section>
+  <section id="success" class="screen success">
+    <div class="successmark">✓</div><h2>Relato enviado!</h2><p class="small">Obrigado por ajudar a comunidade.</p>
+    <div class="protocol"><small>PROTOCOLO</small><strong>PG-2048</strong><span class="small">Status: aguardando validação</span></div>
+    <button class="btn" onclick="go('home')">Voltar ao mapa</button><button class="btn secondary" onclick="openGuidance()">Consultar orientações oficiais</button>
+    <p class="note">Em emergência, ligue 199 ou 153. Para receber alertas oficiais por SMS, envie seu CEP para 40199.</p>
+  </section>
+  <nav class="tabs"><button class="active" data-tab="home" onclick="go('home')"><span>⌖</span>Mapa</button><button data-tab="detail" onclick="go('detail')"><span>◉</span>Ocorrências</button><button data-tab="report" onclick="go('report')"><span>＋</span>Relatar</button></nav>
+  <div id="modal" class="modal" onclick="closeGuidance(event)"><div class="modalbox" onclick="event.stopPropagation()"><h3>Orientações de segurança</h3><p>Não atravesse ruas alagadas, não caminhe em enxurradas e não tente fotografar em locais de risco. Em situação de emergência, acione a Defesa Civil pelos telefones 199 ou 153. O AlertaPG é uma proposta demonstrativa e não substitui os canais oficiais.</p><button class="btn" onclick="closeGuidance()">Entendi</button></div></div>
+</main></div>
+<script>
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));}
+function pick(el){el.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));el.classList.add('selected')}
+function submitReport(){const place=document.getElementById('location').value.trim();if(!place){alert('Informe um local aproximado para continuar.');return}go('success')}
+function openGuidance(){document.getElementById('modal').classList.add('show')}
+function closeGuidance(e){if(!e||e.target.id==='modal'||e.target.tagName==='BUTTON')document.getElementById('modal').classList.remove('show')}
+</script>
+</body></html>
